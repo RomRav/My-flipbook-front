@@ -1,0 +1,21 @@
+
+.fbk-link{
+    position:absolute;
+    border:2px solid;
+    border-radius:.4rem;
+    cursor:pointer;
+    opacity:0;
+    transition:all .2s ease
+}
+.fbk-link{
+    background-color:rgba(255,170,24,0.2);
+    border-color:#ffaa18
+}
+.fbk-link[visible],
+.fbk-link:hover {
+    opacity:1
+}
+
+.css-layer.hidden {
+    opacity: 1 !important ;
+}

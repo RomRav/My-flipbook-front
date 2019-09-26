@@ -1,0 +1,44 @@
+
+<div class="dropdown-content fbk-settings" element-focus no-blur hide-after="0.2"
+	[ngClass]="{'is-visible': settings.showSettings==true}" [hidden]="!settings.showSettings">
+	<div class="dropdown-menu" [hidden]="settings.speedSelectorVis">
+		<ul class="dropdown-menu-inner">
+			<li class="dropdown-menu-item justify-content-space-between fbk-mode-toggle" (click)="settings.switchTheme()">
+				<span>Mode sombre</span>
+				<div class="toggle ml-8 ">
+					<div class="toggle toggle-success" id="fbk-mode-toggle" [attr.checked]='settings.darkMode ? " " : null'>
+						<div class="toggle-btn"></div>
+					</div>
+				</div>
+			</li>
+			<li class="dropdown-menu-item justify-content-space-between fbk-links-toggle" (click)="toggleLinksVisibility()">
+				<span>Toujours afficher les liens</span>
+				<div class="toggle ml-8">
+					<div class="toggle toggle-success" id="fbk-links-toggle" [attr.checked]='flipbook.showLinks ? " " : null'>
+						<div class="toggle-btn"></div>
+					</div>
+				</div>
+			</li>
+			<li class="dropdown-menu-item justify-content-space-between" (click)="showspeedSelector()">
+				<span>Vitesse du défilement automatique</span>
+				<div class="ml-8 d-flex align-items-center">
+					<span class="f-2 c-d mr-1">{{settings.currentPlaySpeed.libelle}}</span>
+					<i class="mdi mdi-chevron-right icon-5 c-d"></i>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class="dropdown-menu dropdown-selectable fbk-speed-settings" [hidden]="!settings.speedSelectorVis">
+		<h1 class="dropdown-menu-title" clickable (click)="showspeedSelector()">
+			<i class="icon mdi mdi-chevron-left"></i>
+			<span>Vitesse du défilement automatique</span>
+		</h1>
+		<ul class="dropdown-menu-inner">
+			<li class="dropdown-menu-item" *ngFor="let time of settings.playSpeed" (click)="speedSelector(time)">
+				<i class="icon mdi mdi-check"></i>
+				<span>{{time.libelle}}</span>
+			</li>
+
+		</ul>
+	</div>
+</div>

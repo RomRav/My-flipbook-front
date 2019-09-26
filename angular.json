@@ -23,7 +23,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/ui/styles.css",
+              "src/ui/flipbook.css",
+              "src/ui/custom.css",
+              "src/vendor/css/materialdesignicons.min.css",
+              "src/vendor/perfect-scrollbar.css"
             ],
             "scripts": [],
             "es5BrowserSupport": true

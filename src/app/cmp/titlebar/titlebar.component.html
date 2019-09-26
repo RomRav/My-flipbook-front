@@ -1,0 +1,44 @@
+
+<div class="fbk-title-bar">
+	<div *ngIf="activateRoute.snapshot.routeConfig.path != 'booklist'" class="d-flex justify-content-flex-end align-items-center flex-shrink-0">
+		<button class="btn btn-l btn-icon btn-naked" tooltipped="se" aria-label="Index" panel-toggle=".panel-left"
+			(click)="toggleNagivationPane()">
+			<i class="btn--icon mdi mdi-page-layout-footer rotate-90"></i>
+		</button>
+	</div>
+	<div  *ngIf="activateRoute.snapshot.routeConfig.path ==='booklist'"  class="dropdown dropdown-left dropdown-below">
+		<button class="btn btn-l btn-naked" (click)="callGetList(1)" tooltipped="sw" aria-label="Liste"
+			trigger-focus=".fbk-settings">
+			Liste
+		</button>
+	</div>
+	<div  *ngIf="activateRoute.snapshot.routeConfig.path ==='booklist'"  class="dropdown dropdown-left dropdown-below">
+		<button class="btn btn-l btn-naked" (click)="callGetList(2)"  tooltipped="sw" aria-label="Plus"
+			trigger-focus=".fbk-settings">
+			Ajouter un livre
+		</button>
+	</div>
+	
+	
+	<div class="align-items-center flex-1 px-2">
+		<div  *ngIf="activateRoute.snapshot.routeConfig.path != 'booklist'" class="fbk-info">
+			<div class="fbk-title">
+				<span>{{bookName}}</span>
+			</div>
+			<div class="fbk-subtitle">
+				<span>{{nbrPage}} pages</span>
+				<span class="separator-dot mx-2 bg-silver"></span>
+				<span>Créé le {{dateCreation | date: 'd/MM/y'}}</span>
+			</div>
+		</div>
+	</div>
+	<div class="d-flex justify-content-flex-end align-items-center flex-shrink-0">
+		<div class="dropdown dropdown-left dropdown-below">
+			<button class="btn btn-l btn-icon btn-naked" (click)='showSettings()' tooltipped="sw" aria-label="Plus"
+				trigger-focus=".fbk-settings">
+				<i class="btn--icon mdi mdi-dots-horizontal"></i>
+			</button>
+			<app-settings-menu></app-settings-menu>	
+		</div>
+	</div>
+</div>

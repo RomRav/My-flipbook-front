@@ -1,0 +1,40 @@
+<div class="panel-inner">
+	<div class="panel-header">
+		<h1 class="panel-title">Index</h1>
+		<button (click)="hiddPan()" class="panel-close btn btn-icon btn-naked">
+			<i class="icon btn--icon mdi mdi-arrow-left"></i>
+		</button>
+	</div>
+	<div class="panel-content">
+		<div class="d-flex flex-column p-4">
+			<div class="fbk-page-group" [ngClass]="{'is-active':spanTableStatus[0]==true}">
+				<div class="fbk-page" (click)="showSelectedPage(1)"
+					[attr.active]='this.flipbook.currentPage == 1 ? " " : null '>
+					<img src="assets/1-large.jpg">
+					<span>1</span>
+				</div>
+			</div>
+
+			<div *ngFor="let page of pairePagesTable; index as index" class="fbk-page-group">
+				<div class="fbk-page" (click)="showSelectedPage(pairePagesTable[index].number)"
+					[attr.active]='this.flipbook.currentPage == pairePagesTable[index].number ? " " : null '>
+					<img src="assets/{{pairePagesTable[index].assetName}}">
+					<span>{{pairePagesTable[index].number}}</span>
+				</div>
+				<div class="fbk-page" (click)="showSelectedPage(oddPagesTable[index].number)"
+					[attr.active]='this.flipbook.currentPage == oddPagesTable[index].number ? " " : null '>
+					<img src="assets/{{oddPagesTable[index].assetName}}">
+					<span>{{oddPagesTable[index].number}}</span>
+				</div>
+			</div>
+
+			<div class="fbk-page-group" [ngClass]="{'is-active':spanTableStatus[this.flipbook.pages.length+1]==true}">
+				<div class="fbk-page" (click)="showSelectedPage(this.flipbook.pages.length+1)"
+					[attr.active]='flipbook.currentPage == flipbook.pages.length ? " " : null '>
+					<img src="assets/{{this.flipbook.pages.length}}-large.jpg">
+					<span>{{this.flipbook.pages.length+1}}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

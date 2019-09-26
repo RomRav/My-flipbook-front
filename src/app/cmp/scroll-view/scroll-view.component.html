@@ -1,0 +1,11 @@
+
+<div *ngFor="let page of flipbook.pages" [attr.fbk-show-links]="flipbook.showLinks" class="fbk-document"
+	(scroll)="scrollHandler($event)">
+	<div class="fbk-links" *ngIf="page.links">
+		<div class="fbk-link" *ngFor="let link of page.links"
+			[ngStyle]="flipbook.getLinkStyle(link)" (click)="flipbook.openLink(link)"
+		></div>
+	</div>
+	<img id="page{{page.number}}" [ngStyle]="{'height': flipbook.zoomDimension.h + 'px'}"
+		src="assets/{{page.assetName}}">
+</div>

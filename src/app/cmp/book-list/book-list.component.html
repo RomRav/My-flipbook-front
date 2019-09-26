@@ -1,0 +1,34 @@
+<app-titlebar></app-titlebar>
+
+<div>
+    <div *ngIf="booksAdmin.ListOrAddBook==true" class="bk-list-cont">
+        <div *ngFor="let book of user.booksTable" class="bk-list">
+            <div>
+                <h2>{{book.bookTitle}}</h2>
+                <p>Description: <span>{{book.description}}</span></p>
+                <p>Nombre de page: <span>{{book.nbPage}}</span></p>
+
+            </div>
+        </div>
+    </div>
+    <div *ngIf="booksAdmin.ListOrAddBook==false" class="bk-list-cont">
+        <form (ngSubmit)="valAndAddBook(f)" #f="ngForm">
+            <div class="form">
+                <div class="form-input">
+                    <label>Titre du livre</label>
+                    <input type="text" name="bookTitle" ngModel required>
+                </div>
+                <div class="form-input">
+                    <label>Date de création</label>
+                    <input type="date" name="creationDate" ngModel>
+                </div>
+                <div class="form-input">
+                    <label>Description</label>
+                    <input type="textarea" name="description" ngModel>
+                </div>
+                <button class="auth-butt" type="submit" [disabled]=f.invalid>Ajouter un livre</button>
+                <div class="message">{{message}}</div>
+            </div>
+        </form>
+    </div>
+</div>

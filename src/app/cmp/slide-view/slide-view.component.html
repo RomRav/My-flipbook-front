@@ -1,0 +1,16 @@
+
+<div class="fbk-document-ctn " [attr.fbk-show-links]="flipbook.showLinks" (mousedown)="viewDragDrop($event)">
+	<div class="fbk-document">
+		<!--Gestion et affichage des liens sur chaque page-->
+		<div class="fbk-links" *ngIf="flipbook.pages[flipbook.currentPage - 1] && flipbook.pages[flipbook.currentPage - 1].links">
+			<div class="fbk-link" *ngFor="let link of flipbook.pages[flipbook.currentPage - 1].links"
+				[ngStyle]="flipbook.getLinkStyle(link)" (click)="flipbook.openLink(link)"
+			></div>
+		</div>
+		<!--Affichage de l'image en fonction de la vue actuelle-->
+		<img id="img" draggable="false" [ngStyle]="{'height': flipbook.zoomDimension.h + 'px'}"
+			src="{{assets}}{{flipbook.currentPage}}{{jpg}}">
+	</div>
+	<!--Donnée du pinch tactile (pour débug à retirer)-->
+	<div style="position:fixed;z-index:100;top:10rem;left:0;font-size:4rem;color:white">{{ debug }}</div>
+</div>

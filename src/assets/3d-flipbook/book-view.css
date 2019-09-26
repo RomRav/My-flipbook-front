@@ -1,0 +1,13 @@
+
+.flip-book {
+    position: relative ;
+    height: 100% ;
+}
+
+.flip-book .view {
+    height: 100% ;
+}
+
+[fbk-show-links="true"] .fbk-link {
+    opacity: 1;
+}

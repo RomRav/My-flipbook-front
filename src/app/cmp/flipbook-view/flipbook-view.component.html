@@ -1,0 +1,30 @@
+<div *ngIf="user.isAuthenticate == true" class="root fbk fbk-reader" [attr.fbk-view]="flipbook.getCurrentViewName()" [attr.hover]="flipbook.showUI ? '' : null">
+	<div class="d-flex flex-column width-100-vw height-100-vh overflow-hidden">
+		<!--Composant de la barre de titre-->
+		<app-titlebar></app-titlebar>
+		<!--Composant de la vue livre 3D-->
+		<app-flip-view *ngIf="flipbook.device==desktop" class="fbk-content"
+			[hidden]="flipbook.currentView !== flipbook.VIEW_FLIP" [ngClass]="{'slide-active': flipbook.slideActive==true}"></app-flip-view >
+			<!--Composant de la vue page par page-->
+		<app-slide-view class="fbk-content" (click)="bodyClickAcion()"
+			[hidden]="flipbook.currentView !== flipbook.VIEW_SLIDE"></app-slide-view>
+			<!--Composant de la vue en scrolling-->
+		<app-scroll-view class="fbk-content" (click)="bodyClickAcion()"
+			[hidden]="flipbook.currentView !== flipbook.VIEW_SCROLL"></app-scroll-view>
+			<!--Composant de la barre de navigation-->
+		<app-toolbar></app-toolbar>
+		<!--Composant de l'index-->
+		<app-nav-pane class="panel panel-left" [attr.expanded]="flipbook.showPane ? true : null"></app-nav-pane>
+	</div>
+	<!--Composant gérant le téléchargement (futur mise à jour)-->
+	<app-download-modal></app-download-modal>
+
+	<div class="backdrop is-hidden"></div>
+<!--Fléches de navigation entre les pages-->
+	<div class="fbk-nav fbk-prev" tooltipped="e" aria-label="Page précédente" (click)="previousPage()">
+		<i class="icon mdi mdi-chevron-left"></i>
+	</div>
+	<div class="fbk-nav fbk-next" tooltipped="w" aria-label="Page suivante" (click)="nextPage()">
+		<i class="icon mdi mdi-chevron-right"></i>
+	</div>
+</div>

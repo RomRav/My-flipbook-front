@@ -1,0 +1,32 @@
+<div class="auth-Doc">
+  <div>
+    <h1>Inscription!</h1>
+  </div>
+  <form (ngSubmit)="checkAndRegistration(f)" #f="ngForm">
+    <div class="form">
+      <div class="form-input">
+        <label>Nom</label>
+        <input type="text" name="name" ngModel>
+      </div>
+      <div class="form-input">
+        <label>Prenom</label>
+        <input type="text" name="firstname" ngModel>
+      </div>
+      <div class="form-input">
+        <label>Email</label>
+        <input type="email" name="email" ngModel email required>
+      </div>
+      <div class="form-input">
+        <label>Mot de passe</label>
+        <input type="password" name="password" ngModel required>
+      </div>
+      <div class="form-input">
+        <label>Conformation du mot de passe</label>
+        <input type="password" name="confPassword" ngModel required>
+      </div>
+      <button class="auth-butt" type="submit" [disabled]=f.invalid>Enregister</button>
+      <div class="message">{{message}}</div>
+    </div>
+  </form>
+ 
+</div>

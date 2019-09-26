@@ -1,0 +1,81 @@
+<div class="fbk-toolbar">
+	<div class="fbk-nav-slider slider slider-m" (mousedown)="navSlider($event)" (mousemove)="mouseFollower($event)">
+		<div id='set-slide-bar' class="slider-bar">
+			<div id="slider-nav-progress" class="slider-progress" [ngStyle]="{'width': flipbook.slidebarCursorX + 'px'}"></div>
+			<div class="slider-tooltip" [ngStyle]="{'left': slidebarImgX + 'px'}">
+				<img src={{assets}}{{prevPage}}{{jpg}}>
+				<span>{{prevPage}}</span>
+			</div>
+		</div>
+		<div id="handleNavBar" [ngClass]="{'transition-handle': flipbook.slideActive==true }"
+			class="is-hidden slider-handle" [ngStyle]="{'left': flipbook.slidebarCursorX-5 + 'px'}"></div>
+	</div>
+	<div class="fbk-toolbar-group">
+		<div class="fbk-toolbar-item" (click)="player()" tooltipped="n" aria-label="Lancer la lecture automatique">
+			<i [ngClass]="{
+                'icon mdi': true,
+                'mdi-play':playerSwitch == true,
+                'mdi-pause':playerSwitch == false}">
+			</i>
+		</div>
+	</div>
+	<div class="fbk-toolbar-group">
+		<div class="fbk-toolbar-item" tooltipped="n" aria-label="Zoom arrière" (click)="zoomOut()">
+			<i class="icon mdi mdi-minus"></i>
+		</div>
+		<div class="fbk-toolbar-item" tooltipped="n" aria-label="Zoom avant" (click)="zoomIn()">
+			<i class="icon mdi mdi-plus"></i>
+		</div>
+		<div class="fbk-toolbar-item">
+			<div class="dropdown dropdown-above dropdown-left height-100">
+				<button (click)="zoomVisibilityChanger()" class="d-flex align-items-center height-100 pl-2"
+					trigger-focus=".fbk-zoom">
+					<span class="f-2 text-right c-xd" style="width:3.4rem;">{{this.flipbook.zoom}}%</span>
+					<i class="icon mdi mdi-menu-up"></i>
+				</button>
+				<div class="dropdown-content fbk-zoom" element-focus hide-after="0.2"
+					[ngClass]="{'is-visible':settings.showZoomSelect==true}" [hidden]="!settings.showZoomSelect">
+					<div class="dropdown-menu dropdown-menu-s">
+						<ul class="dropdown-menu-inner">
+							<li *ngFor="let item of settings.zoomLevel" class="dropdown-menu-item"
+								(click)="changeZoom(item)">
+								<span>{{item}}%</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="fbk-toolbar-group">
+		<div class="fbk-toolbar-item fbk-view-switcher-desktop" tooltipped="n" aria-label="Vue flipbook" fbk-view="flip"
+			[attr.active]="flipbook.currentView === flipbook.VIEW_FLIP ? '' : null"
+			(click)="flipbook.switchView(flipbook.VIEW_FLIP)">
+			<i class="icon icon-4 mdi mdi-book-open-page-variant relative" style="top:-1px;"></i>
+		</div>
+		<div class="fbk-toolbar-item fbk-view-switcher-desktop" tooltipped="n" aria-label="Vue caroussel"
+			fbk-view="slide" [attr.active]="flipbook.currentView === flipbook.VIEW_SLIDE ? '' : null"
+			(click)="flipbook.switchView(flipbook.VIEW_SLIDE)">
+			<i class="icon mdi mdi-view-carousel relative" style="top:1px;"></i>
+		</div>
+		<div class="fbk-toolbar-item fbk-view-switcher-desktop" tooltipped="n" aria-label="Vue défilante"
+			fbk-view="scroll" [attr.active]="flipbook.currentView === flipbook.VIEW_SCROLL ? '' : null"
+			(click)="flipbook.switchView(flipbook.VIEW_SCROLL)">
+			<i class="icon mdi mdi-view-split-horizontal"></i>
+		</div>
+	</div>
+	<div class="fbk-toolbar-group">
+		<div (click)="getFullscreen()" class="fbk-toolbar-item fbk-fullscreen" tooltipped="n" aria-label="Plein écran">
+			<i class="icon mdi mdi-fullscreen"></i>
+		</div>
+	</div>
+</div>
+
+<div class="fbk-view-switcher-mobile" (click)="flipbook.switchView((flipbook.currentView==2)?3:2)">
+	<i [ngClass]="
+	{ 
+		'icon mdi': true,
+		'mdi-view-split-horizontal': flipbook.currentView == 2, 
+		'mdi-view-carousel': flipbook.currentView == 3
+	}"></i>
+</div>
