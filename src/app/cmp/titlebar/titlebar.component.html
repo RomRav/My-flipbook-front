@@ -1,27 +1,33 @@
-
 <div class="fbk-title-bar">
-	<div *ngIf="activateRoute.snapshot.routeConfig.path != 'booklist'" class="d-flex justify-content-flex-end align-items-center flex-shrink-0">
+	<div *ngIf="activateRoute.snapshot.routeConfig.path != 'booklist'"
+		class="d-flex justify-content-flex-end align-items-center flex-shrink-0">
 		<button class="btn btn-l btn-icon btn-naked" tooltipped="se" aria-label="Index" panel-toggle=".panel-left"
 			(click)="toggleNagivationPane()">
 			<i class="btn--icon mdi mdi-page-layout-footer rotate-90"></i>
 		</button>
 	</div>
-	<div  *ngIf="activateRoute.snapshot.routeConfig.path ==='booklist'"  class="dropdown dropdown-left dropdown-below">
+	<div *ngIf="activateRoute.snapshot.routeConfig.path ==='booklist'" class="dropdown dropdown-left dropdown-below">
 		<button class="btn btn-l btn-naked" (click)="callGetList(1)" tooltipped="sw" aria-label="Liste"
 			trigger-focus=".fbk-settings">
 			Liste
 		</button>
 	</div>
-	<div  *ngIf="activateRoute.snapshot.routeConfig.path ==='booklist'"  class="dropdown dropdown-left dropdown-below">
-		<button class="btn btn-l btn-naked" (click)="callGetList(2)"  tooltipped="sw" aria-label="Plus"
+	<div *ngIf="activateRoute.snapshot.routeConfig.path ==='booklist'" class="dropdown dropdown-left dropdown-below">
+		<button class="btn btn-l btn-naked" (click)="callGetList(2)" tooltipped="sw" aria-label="Plus"
 			trigger-focus=".fbk-settings">
 			Ajouter un livre
 		</button>
 	</div>
-	
-	
+	<div *ngIf="activateRoute.snapshot.routeConfig.path ==='booklist'" class="dropdown dropdown-left dropdown-below">
+		<button class="btn btn-l btn-naked" (click)='logout()' tooltipped="sw" aria-label="Déconnexion"
+			trigger-focus=".fbk-settings">
+			<i class="icon mdi mdi-logout logout"></i>
+		</button>
+	</div>
+
+
 	<div class="align-items-center flex-1 px-2">
-		<div  *ngIf="activateRoute.snapshot.routeConfig.path != 'booklist'" class="fbk-info">
+		<div *ngIf="activateRoute.snapshot.routeConfig.path != 'booklist'" class="fbk-info">
 			<div class="fbk-title">
 				<span>{{bookName}}</span>
 			</div>
@@ -38,7 +44,7 @@
 				trigger-focus=".fbk-settings">
 				<i class="btn--icon mdi mdi-dots-horizontal"></i>
 			</button>
-			<app-settings-menu></app-settings-menu>	
+			<app-settings-menu></app-settings-menu>
 		</div>
 	</div>
 </div>

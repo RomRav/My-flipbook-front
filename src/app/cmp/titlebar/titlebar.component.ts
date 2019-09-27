@@ -3,7 +3,7 @@ import { FlipbookService } from 'src/app/svc/flipbook.service';
 import { SettingsService } from 'src/app/svc/settings.service';
 import { DownloaderService } from 'src/app/svc/downloader.service';
 import { UserService } from 'src/app/svc/user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
 	selector: 'app-titlebar',
@@ -21,7 +21,8 @@ export class TitleBarComponent implements OnInit {
 		public settings: SettingsService,
 		public downloader: DownloaderService,
 		public activateRoute: ActivatedRoute,
-		public user: UserService
+		public user: UserService,
+		public route: Router
 	) {
 		this.bookName = this.flipbook.name;
 		this.nbrPage = this.flipbook.pages.length;
@@ -48,4 +49,8 @@ export class TitleBarComponent implements OnInit {
 		this.user.getBookList(item);
 	}
 
+	logout() {
+		this.user.isAuthenticate = false;
+		this.route.navigate(['/auth']);
+	}
 }

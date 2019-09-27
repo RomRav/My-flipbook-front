@@ -159,3 +159,7 @@ button:active{
 	flex-direction: column;
 	justify-content: space-around;
 }
+
+.logout{
+	font-size: 150%;
+}
