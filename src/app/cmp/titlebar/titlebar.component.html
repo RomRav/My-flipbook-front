@@ -7,15 +7,21 @@
 		</button>
 	</div>
 	<div *ngIf="activateRoute.snapshot.routeConfig.path ==='booklist'" class="dropdown dropdown-left dropdown-below">
-		<button class="btn btn-l btn-naked" (click)="callGetList(1)" tooltipped="sw" aria-label="Liste"
+		<button class="btn btn-l btn-naked" (click)="callGetItem('bookList')" tooltipped="sw" aria-label="Liste"
 			trigger-focus=".fbk-settings">
 			Liste
 		</button>
 	</div>
 	<div *ngIf="activateRoute.snapshot.routeConfig.path ==='booklist'" class="dropdown dropdown-left dropdown-below">
-		<button class="btn btn-l btn-naked" (click)="callGetList(2)" tooltipped="sw" aria-label="Plus"
+		<button class="btn btn-l btn-naked" (click)="callGetItem('addBook')" tooltipped="sw" aria-label="Plus"
 			trigger-focus=".fbk-settings">
 			Ajouter un livre
+		</button>
+	</div>
+	<div *ngIf="activateRoute.snapshot.routeConfig.path ==='booklist'" class="dropdown dropdown-left dropdown-below">
+		<button class="btn btn-l btn-naked" (click)="callGetItem('adminAcc')" tooltipped="sw" aria-label="Plus"
+			trigger-focus=".fbk-settings">
+			Gestion de compte
 		</button>
 	</div>
 	<div *ngIf="activateRoute.snapshot.routeConfig.path ==='booklist'" class="dropdown dropdown-left dropdown-below">

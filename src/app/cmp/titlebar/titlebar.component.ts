@@ -45,8 +45,9 @@ export class TitleBarComponent implements OnInit {
 		this.flipbook.showPane = !this.flipbook.showPane;
 	}
 
-	callGetList(item) {
-		this.user.getBookList(item);
+	callGetItem(item) {
+		console.log(item);
+		this.user.getItem(item);
 	}
 
 	logout() {

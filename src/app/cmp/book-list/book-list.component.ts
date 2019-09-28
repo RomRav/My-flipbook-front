@@ -32,7 +32,7 @@ export class BookListComponent implements OnInit {
     this.httpClient.post('http://127.0.0.1:3000/book/' + this.user.currentUser.idUser, f.value)
       .subscribe((response: any) => {
         console.log(response);
-        this.user.getBookList(1);
+        this.user.getItem("bookList");
       })
   }
 

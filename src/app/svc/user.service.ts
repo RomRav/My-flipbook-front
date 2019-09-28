@@ -23,9 +23,10 @@ export class UserService {
   }
 
 
-  getBookList(item) {
-    if (item == 1) {
-      this.booksAdmin.ListOrAddBook = true;
+  getItem(item) {
+    console.log(item);
+    if (item == "bookList") {
+      this.booksAdmin.selectedItem = item;
       this.httpClient.get('http://127.0.0.1:3000/user/bookList/' + this.currentUser.email)
         .subscribe((response: any) => {
           if (response.error) {
@@ -33,8 +34,8 @@ export class UserService {
             this.booksTable = response.dataBookList;
           }
         })
-    }else{
-      this.booksAdmin.ListOrAddBook = false;
+    } else {
+      this.booksAdmin.selectedItem = item;
     }
   }
 

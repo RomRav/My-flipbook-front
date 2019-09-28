@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class BooksAdminService {
 
-  public ListOrAddBook: boolean = true;
+  public selectedItem: string = "bookList";
 
   constructor() { }
 }

@@ -43,13 +43,13 @@ export class InscriptionComponent implements OnInit {
         .subscribe((response: any) => {
           if (response.userRes == "") {
             this.httpClient.post('http://127.0.0.1:3000/user/add', newUser)
-              .subscribe((response:any) => {
+              .subscribe((response: any) => {
                 this.message = "Création du compte " + response;
                 this.user.currentUser = newUser;
-                this.user.currentUser.idUser=response.idUser;
+                this.user.currentUser.idUser = response.idUser;
                 console.log(this.user.currentUser);
                 this.user.isAuthenticate = true;
-                this.user.getBookList(1);
+                this.user.getItem("bookList");
                 this.route.navigate(['booklist']);
               })
           } else {

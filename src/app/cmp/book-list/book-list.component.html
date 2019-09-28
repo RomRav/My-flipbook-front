@@ -1,7 +1,7 @@
 <app-titlebar></app-titlebar>
-
+<!-- Liste des livres -->
 <div>
-    <div *ngIf="booksAdmin.ListOrAddBook==true" class="bk-list-cont">
+    <div *ngIf="booksAdmin.selectedItem=='bookList'" class="bk-list-cont">
         <div *ngFor="let book of user.booksTable" class="bk-list">
             <div>
                 <h2>{{book.bookTitle}}</h2>
@@ -11,7 +11,8 @@
             </div>
         </div>
     </div>
-    <div *ngIf="booksAdmin.ListOrAddBook==false" class="bk-list-cont">
+    <!-- Formulaire d'ajout de livre -->
+    <div *ngIf="booksAdmin.selectedItem=='addBook'" class="bk-list-cont">
         <form (ngSubmit)="valAndAddBook(f)" #f="ngForm">
             <div class="form">
                 <div class="form-input">
@@ -30,5 +31,9 @@
                 <div class="message">{{message}}</div>
             </div>
         </form>
+    </div>
+    <!-- Formulaire de gestion du compte utilisateur -->
+    <div *ngIf="booksAdmin.selectedItem=='adminAcc'" class="bk-list-cont">
+        <p>Hello</p>
     </div>
 </div>
