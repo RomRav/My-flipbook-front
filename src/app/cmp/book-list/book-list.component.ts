@@ -33,7 +33,12 @@ export class BookListComponent implements OnInit {
       .subscribe((response: any) => {
         console.log(response);
         this.user.getItem("bookList");
-      })
+      });
+  }
+
+
+  updateBook(f){
+
   }
 
 }

@@ -34,27 +34,19 @@
     </div>
     <!-- Formulaire de gestion du compte utilisateur -->
     <div *ngIf="booksAdmin.selectedItem=='adminAcc'" class="bk-list-cont">
-        <form (ngSubmit)="checkAndRegistration(f)" #f="ngForm">
+        <form (ngSubmit)="updateBook(f)" #f="ngForm">
             <div class="form">
                 <div class="form-input">
                     <label>Nom</label>
-                    <input type="text" name="name" {{user.currentUser.userName}}="hello" ngModel>
+                    <input type="text" name="name" [(ngModel)]="user.currentUser.userName" ngModel>
                 </div>
                 <div class="form-input">
-                    <label>Prenom</label>
-                    <input type="text" name="firstname" ngModel>
+                    <label>Prenom</label> 
+                    <input type="text" name="firstname" [(ngModel)]="user.currentUser.userFirstName" ngModel>
                 </div>
                 <div class="form-input">
                     <label>Email</label>
-                    <input type="email" name="email" ngModel email required>
-                </div>
-                <div class="form-input">
-                    <label>Mot de passe</label>
-                    <input type="password" name="password" ngModel required>
-                </div>
-                <div class="form-input">
-                    <label>Confirmation du mot de passe</label>
-                    <input type="password" name="confPassword" ngModel required>
+                    <input type="email" name="email" [(ngModel)]="user.currentUser.email" ngModel email required>
                 </div>
                 <button class="auth-butt" type="submit" [disabled]=f.invalid>Enregister</button>
                 <div class="message">{{message}}</div>
