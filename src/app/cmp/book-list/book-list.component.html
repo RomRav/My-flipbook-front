@@ -42,15 +42,14 @@
                 </div>
                 <div class="form-input">
                     <label>Prenom</label> 
-                    <input type="text" name="firstname" [(ngModel)]="user.currentUser.userFirstName" ngModel>
+                    <input type="text" name="firstname" [(ngModel)]="user.currentUser.userFirstname" ngModel>
                 </div>
                 <div class="form-input">
                     <label>Email</label>
                     <input type="email" name="email" [(ngModel)]="user.currentUser.email" ngModel email required>
                 </div>
-                <button class="auth-butt" type="submit" [disabled]=f.invalid>Enregister</button>
+                <button class="auth-butt" type="submit" [disabled]=f.invalid>Modifier</button>
                 <div class="message">{{message}}</div>
-                <a routerLink='/auth'>Retour</a>
             </div>
         </form>
     </div>
