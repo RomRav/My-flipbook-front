@@ -19,20 +19,24 @@ export class BookListComponent implements OnInit {
     public route: Router
   ) { }
 
-  ngOnInit() {
+  ngOnInit() {}
 
-
-
-  }
-
-
+    //Envoie au serveur des données du formulaire d'ajout de livres 
   valAndAddBook(f) {
-    console.log(this.user.currentUser.idUser);
+    console.log(f.value.files);
     this.httpClient.post('http://127.0.0.1:3000/book/' + this.user.currentUser.idUser, f.value)
       .subscribe((response: any) => {
         console.log(response);
         this.user.getItem("bookList");
       });
+  }
+
+  //Récupération des images selectionné
+  getFiles(ev) {
+    for (var i = 0; i < ev.target.files.length; i++) {
+      console.log(ev.target.files[i]);
+    }
+
   }
 
 

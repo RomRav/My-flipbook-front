@@ -27,6 +27,10 @@
                     <label>Description</label>
                     <input type="textarea" name="description" ngModel>
                 </div>
+                <div class="form-input">
+                    <label>Selectionner les fichiers</label>
+                    <input type="file" ty name="files" accept="image/jpeg" multiple='true' (change)='getFiles($event)' ngModel>
+                </div>
                 <button class="auth-butt" type="submit" [disabled]=f.invalid>Ajouter un livre</button>
                 <div class="message">{{message}}</div>
             </div>
