@@ -12,6 +12,7 @@ import { UserData } from 'src/app/ett/userData';
 })
 export class BookListComponent implements OnInit {
   public message = "";
+  public uploadImage = [];
   constructor(
     public httpClient: HttpClient,
     public user: UserService,
@@ -19,13 +20,11 @@ export class BookListComponent implements OnInit {
     public route: Router
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-    //Envoie au serveur des données du formulaire d'ajout de livres 
+  //Envoie au serveur des données du formulaire d'ajout de livres 
   valAndAddBook(f) {
-
     console.log(f.value);
-
     this.httpClient.post('http://127.0.0.1:3000/book/' + this.user.currentUser.idUser, f.value)
       .subscribe((response: any) => {
         console.log(response);
@@ -36,9 +35,9 @@ export class BookListComponent implements OnInit {
   //Récupération des images selectionné
   getFiles(ev) {
     for (var i = 0; i < ev.target.files.length; i++) {
-      console.log(ev.target.files[i]);
+      this.uploadImage.push(ev.target.files[i]);
     }
-
+    console.log(this.uploadImage);
   }
 
 
