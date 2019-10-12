@@ -27,6 +27,10 @@
                     <label>Description</label>
                     <input type="textarea" name="description" ngModel>
                 </div>
+                <div class="form-input">
+                    <label>Fichier</label>
+                    <input type="file" name="file" accept="image/jpeg" ngModel>
+                </div>
                 <button class="auth-butt" type="submit" [disabled]=f.invalid>Ajouter un livre</button>
                 <div class="message">{{message}}</div>
             </div>
@@ -41,8 +45,8 @@
                     <input type="text" name="name" [(ngModel)]="user.currentUser.userName" ngModel>
                 </div>
                 <div class="form-input">
-                    <label>Prenom</label> 
-                    <input type="text" name="firstname" [(ngModel)]="user.currentUser.userFirstName" ngModel>
+                    <label>Prenom</label>
+                    <input type="text" name="firstname" [(ngModel)]="user.currentUser.userFirstname" ngModel>
                 </div>
                 <div class="form-input">
                     <label>Email</label>

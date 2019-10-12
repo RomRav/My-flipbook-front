@@ -28,7 +28,7 @@ export class BookListComponent implements OnInit {
 
 
   valAndAddBook(f) {
-    console.log(this.user.currentUser.idUser);
+    console.log(f.value);
     this.httpClient.post('http://127.0.0.1:3000/book/' + this.user.currentUser.idUser, f.value)
       .subscribe((response: any) => {
         console.log(response);
