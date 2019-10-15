@@ -24,15 +24,19 @@ export class BookListComponent implements OnInit {
 
   //Envoie au serveur des données du formulaire d'ajout de livres 
   valAndAddBook(f) {
+    f.value.file = this.uploadImage;
     console.log(f.value);
     this.httpClient.post('http://127.0.0.1:3000/book/' + this.user.currentUser.idUser, f.value)
       .subscribe((response: any) => {
-        console.log(response);
+        if (response.insert) {
+          this.uploadImage = [];
+        }
+        console.log(response.insert);
         this.user.getItem("bookList");
       });
   }
 
-  //Récupération des images selectionné
+  //Récupération des images selectionné (et modification du nom des fichiers)=> a faire !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   getFiles(ev) {
     for (var i = 0; i < ev.target.files.length; i++) {
       this.uploadImage.push(ev.target.files[i]);
