@@ -43,12 +43,10 @@ export class AuthComponent implements OnInit {
         if (response.user) {
           this.user.isAuthenticate = true;
           this.user.currentUser = response.user[0];
-          console.log(this.user.currentUser);
           this.user.getItem('bookList');
           this.route.navigate(['booklist']);
         } else {
           this.message = "Compte inexistant cliquez sur \"Inscription\" pour crée un compte."
-          console.log(response);
         }
       })
 

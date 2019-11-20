@@ -38,9 +38,15 @@ export class BookListComponent implements OnInit {
 
   //Récupération des images selectionné (et modification du nom des fichiers)=> a faire !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   getFiles(ev) {
+    var reader = new FileReader();
+    reader.addEventListener("loadend", () => {
+      this.uploadImage.push(reader.result);
+    });
+
     for (var i = 0; i < ev.target.files.length; i++) {
-      this.uploadImage.push(ev.target.files[i]);
+      reader.readAsDataURL(ev.target.files[i]);
     }
+
     console.log(this.uploadImage);
   }
 

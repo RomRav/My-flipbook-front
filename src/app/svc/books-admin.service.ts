@@ -7,11 +7,13 @@ import { HttpClient } from '@angular/common/http';
 export class BooksAdminService {
 
   public selectedItem: string = "bookList";
+  public coverTypesTable = [];
 
-  constructor(public httpClient: HttpClient) { 
+  constructor(public httpClient: HttpClient) {
     this.httpClient.get('http://127.0.0.1:3000/book/coverTypes')
-    .subscribe((response:any)=>{
-      console.log(response);
-    });
+      .subscribe((response: any) => {
+        this.coverTypesTable = response.covers;
+        console.log(this.coverTypesTable);
+      });
   }
 }

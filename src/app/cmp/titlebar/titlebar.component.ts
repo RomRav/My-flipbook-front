@@ -46,7 +46,6 @@ export class TitleBarComponent implements OnInit {
 	}
 
 	callGetItem(item) {
-		console.log(item);
 		this.user.getItem(item);
 	}
 
