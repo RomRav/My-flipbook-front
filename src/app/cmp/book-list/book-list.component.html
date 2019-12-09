@@ -29,7 +29,14 @@
                 </div>
                 <div class="form-input">
                     <label>Fichier</label>
-                    <input type="file" name="file" accept="image/jpeg" multiple="true" (change)="getFiles($event)" ngModel>
+                    <input type="file" name="file" accept="image/jpeg" multiple="true" (change)="getFiles($event)"
+                        ngModel>
+                </div>
+                <div class="form-input">
+                    <label>Type de couverture</label>
+                    <select name="CoverType" *ngFor='let cover of booksAdmin.coverTypesTable' ngModel>
+                        <option value={{cover.idCoverType}}>{{cover.CoverType}}</option>
+                    </select>
                 </div>
                 <button class="auth-butt" type="submit" [disabled]=f.invalid>Ajouter un livre</button>
                 <div class="message">{{message}}</div>

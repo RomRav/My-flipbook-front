@@ -24,7 +24,6 @@ export class UserService {
 
 
   getItem(item) {
-    console.log(item);
     if (item == "bookList") {
       this.booksAdmin.selectedItem = item;
       this.httpClient.get('http://127.0.0.1:3000/user/bookList/' + this.currentUser.email)
