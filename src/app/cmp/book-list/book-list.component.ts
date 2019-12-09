@@ -11,8 +11,11 @@ import { UserData } from 'src/app/ett/userData';
   styleUrls: ['./book-list.component.css']
 })
 export class BookListComponent implements OnInit {
+  selectedFile = {
+    file: File
+  };
   public message = "";
-  public uploadImage = [];
+  public uploadImage;
   constructor(
     public httpClient: HttpClient,
     public user: UserService,
@@ -38,10 +41,16 @@ export class BookListComponent implements OnInit {
 
   //Récupération des images selectionné (et modification du nom des fichiers)=> a faire !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   getFiles(ev) {
+    const reader = new FileReader();
+
     for (var i = 0; i < ev.target.files.length; i++) {
       this.uploadImage.push(ev.target.files[i]);
     }
-    console.log(this.uploadImage);
+    reader.addEventListener('load', (event: any) => {
+      this.selectedFile.file = this.uploadImage;
+    });
+    reader.readAsDataURL(this.uploadImage);
+
   }
 
 
